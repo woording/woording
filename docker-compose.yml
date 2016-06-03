@@ -1,0 +1,17 @@
+version: '2'
+services:
+    api:
+        build: ./woording-api/.
+        volumes: 
+            - ./woording-api/:/source-files
+        depends_on:
+            - db
+        links:
+            - db:woording-db 
+        ports:
+            - "5000"
+    db:
+        build: ./woording-db/.
+        environment:
+            - POSTGRES_PASSWORD=mysecretpassword
+

@@ -1,3 +1,6 @@
 [submodule "woording-api"]
 	path = woording-api
 	url = http://github.com/woording/woording-api
+[submodule "woording-db"]
+	path = woording-db
+	url = http://github.com/woording/woording-db

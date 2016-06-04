@@ -14,4 +14,6 @@ services:
         build: ./woording-db/.
         environment:
             - POSTGRES_PASSWORD=mysecretpassword
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=postgres
 

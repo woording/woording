@@ -4,3 +4,6 @@
 [submodule "woording-db"]
 	path = woording-db
 	url = http://github.com/woording/woording-db
+[submodule "woording-web"]
+	path = woording-web
+	url = http://github.com/woording/woording-web

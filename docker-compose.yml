@@ -9,7 +9,7 @@ services:
         links:
             - db:woording-db 
         ports:
-            - "5000"
+            - "5000:5000"
     db:
         build: ./woording-db/.
         environment:

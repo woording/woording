@@ -6,8 +6,10 @@ services:
             - ./woording-api/:/source-files
         depends_on:
             - db
+            - mail
         links:
             - db:woording-db 
+            - mail:woording-mail
         ports:
             - "5000:5000"
     db:
@@ -16,4 +18,10 @@ services:
             - POSTGRES_PASSWORD=mysecretpassword
             - POSTGRES_USER=postgres
             - POSTGRES_DB=postgres
-
+    mail: 
+        image: catatnight/postfix:latest
+        ports:
+            - "25"
+        environment:
+            - maildomain=woording.com
+            - smtp_user=noreply@woording.com:SecretPassw0rd

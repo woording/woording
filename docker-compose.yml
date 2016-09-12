@@ -25,3 +25,11 @@ services:
         environment:
             - maildomain=woording.com
             - smtp_user=noreply@woording.com:SecretPassw0rd
+    web:
+        image: nginx:alpine
+        ports:
+            - 80:80
+            - 433:443
+        volumes:
+            - ./woording-web/:/usr/share/nginx/html:ro
+

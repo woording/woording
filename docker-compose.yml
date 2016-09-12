@@ -12,6 +12,8 @@ services:
             - mail:woording-mail
     db:
         build: ./woording-db/.
+        volumes:
+            - woording-db-volume:/var/lib/postgresql/data
         environment:
             - POSTGRES_PASSWORD=mysecretpassword
             - POSTGRES_USER=postgres
@@ -45,4 +47,5 @@ services:
             - 433:433
         volumes:
             - ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
-
+volumes:
+    woording-db-volume:

@@ -27,6 +27,8 @@ services:
             - smtp_user=noreply@woording.com:SecretPassw0rd
     web:
         image: nginx:alpine
+        depends_on:
+            - api
         links: 
             - api:woording-api
         ports:

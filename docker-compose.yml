@@ -27,9 +27,12 @@ services:
             - smtp_user=noreply@woording.com:SecretPassw0rd
     web:
         image: nginx:alpine
+        links: 
+            - api:woording-api
         ports:
             - 80:80
             - 433:443
         volumes:
+            - ./woording-web/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./woording-web/:/usr/share/nginx/html:ro
 

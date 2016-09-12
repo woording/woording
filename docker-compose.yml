@@ -10,8 +10,6 @@ services:
         links:
             - db:woording-db 
             - mail:woording-mail
-        ports:
-            - "5000:5000"
     db:
         build: ./woording-db/.
         environment:
@@ -31,10 +29,20 @@ services:
             - api
         links: 
             - api:woording-api
-        ports:
-            - 80:80
-            - 433:443
         volumes:
             - ./woording-web/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./woording-web/:/usr/share/nginx/html:ro
+    proxy:
+        image: nginx:alpine
+        depends_on:
+            - api
+            - web
+        links:
+            - api:woording-api
+            - web:woording-web
+        ports:
+            - 80:80
+            - 433:433
+        volumes:
+            - ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
 
